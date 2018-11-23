@@ -3,21 +3,19 @@ import Counter from "./counterComponent";
 
 class Counters extends Component {
   render() {
+    const { onReset, counters, onDelete, onIncrement } = this.props;
     return (
       <div>
-        <button
-          onClick={this.props.onReset}
-          className="btn btn-primary btn-sm m-2"
-        >
+        <button onClick={onReset} className="btn btn-primary btn-sm m-2">
           Reset
         </button>
         {/* Another reference to the props that are pass from App */}
-        {this.props.counters.map(counter => (
+        {counters.map(counter => (
           <Counter
             key={counter.id}
             // bubbling up the event to the Parent App via inclusion of the props references to each of these events in App
-            onDelete={this.props.onDelete}
-            onIncrement={this.props.onIncrement}
+            onDelete={onDelete}
+            onIncrement={onIncrement}
             counter={counter}
             // value={counter.value}
             // id={counter.id}
